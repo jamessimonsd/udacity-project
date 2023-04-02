@@ -27,7 +27,9 @@ jobs:
         uses: KengoTODA/actions-setup-docker-compose@v1
         with:
           version: "2.14.2"
-          env:
+
+      - name: Build and push Docker images
+        env:
           POSTGRES_USERNAME: ${{ secrets.POSTGRES_USERNAME }}
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
           POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
@@ -38,7 +40,7 @@ jobs:
           AWS_REGION: ${{ env.AWS_REGION }}
           URL: ${{ env.URL }}
         run: |
-          docker-compose -f docker-compose-build.yml build --parallel \
+          docker compose -f docker-compose-build.yml build --parallel \
             --build-arg POSTGRES_USERNAME=${POSTGRES_USERNAME} \
             --build-arg POSTGRES_PASSWORD=${POSTGRES_PASSWORD} \
             --build-arg POSTGRES_HOST=${POSTGRES_HOST} \
@@ -48,4 +50,4 @@ jobs:
             --build-arg AWS_PROFILE=${AWS_PROFILE} \
             --build-arg AWS_REGION=${AWS_REGION} \
             --build-arg URL=${URL} \
-          docker-compose push
+          docker compose push
