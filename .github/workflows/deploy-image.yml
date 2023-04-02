@@ -24,7 +24,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Install Docker Compose
-        uses: docker/compose-cli-action@v0.6.0
+        uses: withlogicco/setup-compose-cli@v1
 
       - name: Build and push Docker images
         env:
