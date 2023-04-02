@@ -25,17 +25,17 @@ jobs:
       - name: Build and tag Docker images
         run: |
           docker build  -t reverse-proxy:$GITHUB_SHA -f ./reverse-proxy/Dockerfile ./reverse-proxy
-          docker tag reverse-proxy:$GITHUB_SHA reverseproxy:latest
+          docker tag reverse-proxy:$GITHUB_SHA cuongthach137/reverseproxy:latest
           docker push cuongthach137/reverseproxy:latest
 
           docker build  -t udagram-frontend:$GITHUB_SHA -f ./udagram-frontend/Dockerfile ./udagram-frontend
-          docker tag udagram-frontend:$GITHUB_SHA udagram-frontend:latest
-          docker push jamessimonsd/udagram-frontend:latest
+          docker tag udagram-frontend:$GITHUB_SHA cuongthach137/udagram-frontend:latest
+          docker push cuongthach137/udagram-frontend:latest
 
           docker build  -t feed-service:$GITHUB_SHA -f ./feed-service/Dockerfile ./feed-service
-          docker tag feed-service:$GITHUB_SHA udagram-api-feed:latest
-          docker push jamessimonsd/udagram-api-feed:latest
+          docker tag feed-service:$GITHUB_SHA cuongthach137/udagram-api-feed:latest
+          docker push cuongthach137/udagram-api-feed:latest
 
           docker build  -t user-service:$GITHUB_SHA -f ./user-service/Dockerfile ./user-service
-          docker tag user-service:$GITHUB_SHA udagram-api-user:latest
-          docker push jamessimonsd/udagram-api-user:latest
+          docker tag user-service:$GITHUB_SHA cuongthach137/udagram-api-user:latest
+          docker push cuongthach137/udagram-api-user:latest
